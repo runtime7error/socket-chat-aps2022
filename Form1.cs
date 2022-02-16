@@ -77,9 +77,9 @@ namespace webSocketChat
         }
     }
 
-    class Program
+    public class Server
     {
-        static void Main(string[] args)
+        static void ServerOpen(string[] args)
         {
             IPHostEntry ipEntry = Dns.GetHostEntry(Dns.GetHostName());
 
