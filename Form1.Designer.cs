@@ -74,11 +74,14 @@ namespace webSocketChat
             // 
             // txt_ChatMessages
             // 
+            this.txt_ChatMessages.CausesValidation = false;
             this.txt_ChatMessages.Location = new System.Drawing.Point(12, 53);
             this.txt_ChatMessages.Name = "txt_ChatMessages";
+            this.txt_ChatMessages.ReadOnly = true;
             this.txt_ChatMessages.Size = new System.Drawing.Size(975, 444);
             this.txt_ChatMessages.TabIndex = 14;
             this.txt_ChatMessages.Text = "";
+            this.txt_ChatMessages.TextChanged += new System.EventHandler(this.txt_ChatMessages_TextChanged);
             // 
             // btn_SendMessage
             // 
@@ -88,6 +91,7 @@ namespace webSocketChat
             this.btn_SendMessage.TabIndex = 13;
             this.btn_SendMessage.Text = "Enviar";
             this.btn_SendMessage.UseVisualStyleBackColor = true;
+            this.btn_SendMessage.Click += new System.EventHandler(this.btn_SendMessage_Click);
             // 
             // txt_Message
             // 
@@ -104,6 +108,7 @@ namespace webSocketChat
             this.btn_Connect.TabIndex = 11;
             this.btn_Connect.Text = "Conectar";
             this.btn_Connect.UseVisualStyleBackColor = true;
+            this.btn_Connect.Click += new System.EventHandler(this.btn_Connect_Click);
             // 
             // label_IpAdress
             // 

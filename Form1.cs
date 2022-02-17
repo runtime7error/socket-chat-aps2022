@@ -24,6 +24,25 @@ namespace webSocketChat
         {
 
         }
+
+        private void btn_SendMessage_Click(object sender, EventArgs e)
+        {
+            string username = txt_User.Text;
+            MessageReceived msg = new MessageReceived(txt_Message.Text, username);
+            txt_ChatMessages.AppendText(String.Format("{0}: {1} \n", msg.Username, msg.Message));
+        }
+
+        private void txt_ChatMessages_TextChanged(object sender, EventArgs e)
+        {
+            this.txt_ChatMessages.Enabled = true;
+            this.txt_ChatMessages.ReadOnly = true;
+        }
+
+        private void btn_Connect_Click(object sender, EventArgs e)
+        {
+           string userName = txt_User.Text;
+
+        }
     }
 
     public class Echo : WebSocketBehavior
@@ -50,9 +69,9 @@ namespace webSocketChat
         {
             Console.WriteLine("Mensagem recebida por default no servidor ws." + e.Data);
 
-            MessageReceived pessoa = new MessageReceived("msg teste 123");
+            MessageReceived msg = new MessageReceived("msg teste 123", "usuário");
 
-            var serializedContent = JsonConvert.SerializeObject(pessoa);
+            var serializedContent = JsonConvert.SerializeObject(msg);
             StringContent content = new StringContent(serializedContent, Encoding.UTF8, "application/json");
 
             byte[] dataBytes = Encoding.Default.GetBytes(serializedContent);
@@ -66,14 +85,12 @@ namespace webSocketChat
     public class MessageReceived
     {
         public string Message { get; set; }
+        public string Username { get; set; }
 
-        public MessageReceived(string message)
+        public MessageReceived(string message, string username)
         {
             Message = message;
-        }
-        public MessageReceived()
-        {
-
+            Username = username;
         }
     }
 
